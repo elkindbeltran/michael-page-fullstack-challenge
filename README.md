@@ -1,16 +1,17 @@
 # Michael Page Fullstack Challenge
 
-## 📌 Overview
+## Overview
 This project implements a **Task Management System** using **.NET Web API**, following **Clean Architecture**, CQRS with MediatR, and SQL Server.
 
 It supports user and task management, including advanced filtering and JSON data handling in SQL Server.
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ### Solution structure
 
+```
 src/
  ├── MichaelPageChallenge.API
  ├── MichaelPageChallenge.Application
@@ -19,6 +20,7 @@ src/
 
 tests/
  ├── MichaelPageChallenge.Tests
+```
 
 ### Layers
 
@@ -29,7 +31,7 @@ tests/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Run the API
 
@@ -41,7 +43,7 @@ https://localhost:7105/swagger
 
 ---
 
-## 🗄️ Database Setup
+## Database Setup
 
 ### Apply migrations
 
@@ -49,16 +51,16 @@ dotnet ef database update --project src/MichaelPageChallenge.Infrastructure --st
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
-### 👤 Users
+### Users
 
 - POST /api/users  
 - GET /api/users  
 
 ---
 
-### 📋 Tasks
+### Tasks
 
 - POST /api/tasks  
 - GET /api/tasks  
@@ -66,7 +68,7 @@ dotnet ef database update --project src/MichaelPageChallenge.Infrastructure --st
 
 ---
 
-### 🔎 Filtering & Sorting
+### Filtering & Sorting
 
 GET /api/tasks?userId={guid}&status={status}&order=asc|desc
 
@@ -77,7 +79,7 @@ Supports:
 
 ---
 
-## ⚙️ Business Rules
+## Business Rules
 
 - Task title is required  
 - Task must have an assigned user  
@@ -85,7 +87,7 @@ Supports:
 
 ---
 
-## 🧪 Validations
+## Validations
 
 Implemented using FluentValidation:
 - Input validation at application layer  
@@ -93,7 +95,7 @@ Implemented using FluentValidation:
 
 ---
 
-## 🧾 JSON Support in SQL Server
+## JSON Support in SQL Server
 
 Tasks include an AdditionalData column (NVARCHAR(MAX)) to store JSON.
 
@@ -111,7 +113,7 @@ Tasks include an AdditionalData column (NVARCHAR(MAX)) to store JSON.
 
 ---
 
-## 🛡️ JSON Validation (SQL)
+## JSON Validation (SQL)
 
 ALTER TABLE Tasks  
 ADD CONSTRAINT CK_Tasks_AdditionalData_IsJson  
@@ -123,7 +125,7 @@ CHECK (
 
 ---
 
-## 🔍 JSON Queries
+## JSON Queries
 
 ### Get a JSON field
 
@@ -180,7 +182,7 @@ ORDER BY CreatedAt DESC;
 
 ---
 
-## 🧠 Technical Highlights
+## Technical Highlights
 
 - Clean Architecture  
 - CQRS with MediatR  
