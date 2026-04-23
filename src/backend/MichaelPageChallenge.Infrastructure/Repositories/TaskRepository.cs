@@ -15,11 +15,21 @@ public class TaskRepository : ITaskRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<TaskItem>> GetAllAsync()
+    public async Task<IEnumerable<TaskItem>> GetFilteredAsync(Guid? userId, TaskItemStatus? status, bool orderDesc)
     {
-        return await _context.Tasks
-            .AsNoTracking()
-            .ToListAsync();
+        var query = _context.Tasks.AsQueryable();
+
+        if (userId.HasValue)
+            query = query.Where(x => x.UserId == userId);
+
+        if (status.HasValue)
+            query = query.Where(x => x.Status == status);
+
+        query = orderDesc
+            ? query.OrderByDescending(x => x.CreatedAt)
+            : query.OrderBy(x => x.CreatedAt);
+
+        return await query.AsNoTracking().ToListAsync();
     }
 
     public async Task<TaskItem?> GetByIdAsync(Guid id)

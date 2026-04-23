@@ -14,11 +14,11 @@ public class TasksController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] Guid? userId, [FromQuery] TaskItemStatus? status, [FromQuery] string? order = "asc")
     {
-        _logger.LogInformation("Fetching tasks");
+        _logger.LogInformation("Fetching tasks with filters");
 
-        var result = await _mediator.Send(new GetTasksQuery());
+        var result = await _mediator.Send(new GetTasksQuery(userId, status, order));
 
         return Ok(result);
     }

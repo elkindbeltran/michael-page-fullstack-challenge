@@ -14,3 +14,4 @@ global using MichaelPageChallenge.Application.Features.Tasks.Commands;
 global using MichaelPageChallenge.Application.Features.Tasks.Queries;
 global using MichaelPageChallenge.Application.Features.Users.Commands;
 global using MichaelPageChallenge.Application.Features.Users.Queries;
+global using MichaelPageChallenge.Domain.Enums;

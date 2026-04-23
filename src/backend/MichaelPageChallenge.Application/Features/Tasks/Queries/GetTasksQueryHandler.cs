@@ -14,7 +14,8 @@ public class GetTasksQueryHandler
 
     public async Task<IEnumerable<TaskDto>> Handle(GetTasksQuery request, CancellationToken cancellationToken)
     {
-        var tasks = await _repository.GetAllAsync();
+        var tasks = await _repository.GetFilteredAsync(request.UserId, request.Status, request.Order == "desc");
+
         return _mapper.Map<IEnumerable<TaskDto>>(tasks);
     }
 }
