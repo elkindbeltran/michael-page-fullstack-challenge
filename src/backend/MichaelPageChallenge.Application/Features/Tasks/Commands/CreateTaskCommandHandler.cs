@@ -14,7 +14,7 @@ public class CreateTaskCommandHandler
 
     public async Task<TaskDto> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
     {
-        var task = new TaskItem(request.Title, request.UserId);
+        var task = new TaskItem(request.Title, request.UserId, request.AdditionalData);
 
         await _repository.AddAsync(task);
 

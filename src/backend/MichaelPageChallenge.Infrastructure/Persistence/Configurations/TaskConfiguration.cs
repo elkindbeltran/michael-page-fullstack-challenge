@@ -16,6 +16,10 @@ public class TaskConfiguration : IEntityTypeConfiguration<TaskItem>
         builder.Property(x => x.UserId)
             .IsRequired();
 
+        builder.Property(x => x.AdditionalData)
+            .HasColumnType("nvarchar(max)")
+            .IsRequired(false);
+
         builder.HasOne<User>()
             .WithMany()
             .HasForeignKey(x => x.UserId)

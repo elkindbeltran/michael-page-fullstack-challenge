@@ -9,6 +9,13 @@ public class TaskProfile : Profile
                 opt => opt.MapFrom(src => src.Status.ToString()));
 
         CreateMap<CreateTaskCommand, TaskItem>()
-            .ConstructUsing(src => new TaskItem(src.Title, src.UserId));
+            .ConstructUsing(src => new TaskItem(src.Title, src.UserId, src.AdditionalData))
+            .AfterMap((src, dest) =>
+            {
+                if (!string.IsNullOrWhiteSpace(src.AdditionalData))
+                {
+                    dest.SetAdditionalData(src.AdditionalData);
+                }
+            });
     }
 }
