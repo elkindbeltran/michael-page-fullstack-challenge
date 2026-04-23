@@ -8,6 +8,18 @@ public static class ServiceCollectionExtensions
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAngular",
+                policy =>
+                {
+                    policy
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+        });
+
         return services;
     }
 }
