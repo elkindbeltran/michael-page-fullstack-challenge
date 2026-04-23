@@ -1,0 +1,14 @@
+﻿global using MichaelPageChallenge.Application.Features.Products.Commands;
+global using MichaelPageChallenge.Application.Features.Products.Queries;
+global using MichaelPageChallenge.API.Extensions;
+global using MichaelPageChallenge.API.Middleware;
+global using Microsoft.AspNetCore.Mvc;
+global using MediatR;
+global using FluentValidation;
+global using Serilog;
+global using System.Net;
+global using System.Text.Json;
+global using MichaelPageChallenge.API.Contracts.Errors;
+global using MichaelPageChallenge.Application.Exceptions;
+global using MichaelPageChallenge.Application.DependencyInjection;
+global using MichaelPageChallenge.Infrastructure.DependencyInjection;

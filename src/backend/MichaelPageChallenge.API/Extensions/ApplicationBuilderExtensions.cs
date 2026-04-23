@@ -1,0 +1,20 @@
+﻿namespace MichaelPageChallenge.API.Extensions;
+
+public static class ApplicationBuilderExtensions
+{
+    public static WebApplication UseApiMiddlewares(this WebApplication app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        app.UseMiddleware<CorrelationIdMiddleware>();
+        app.UseMiddleware<ExceptionMiddleware>();        
+
+        app.MapControllers();
+
+        return app;
+    }
+}
