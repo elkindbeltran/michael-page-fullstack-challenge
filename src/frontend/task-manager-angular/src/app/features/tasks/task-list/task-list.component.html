@@ -1,0 +1,77 @@
+<div style="margin-top: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="selectedStatus"
+                (selectionChange)="onStatusFilterChange()">
+
+      <mat-option value="">All</mat-option>
+      <mat-option value="Pending">Pending</mat-option>
+      <mat-option value="InProgress">InProgress</mat-option>
+      <mat-option value="Done">Done</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary"
+          (click)="goToCreate()">
+    New Task
+  </button>
+
+</div>
+
+<table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let task">{{ task.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let task">
+      {{ task.status }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="userId">
+    <th mat-header-cell *matHeaderCellDef>User</th>
+    <td mat-cell *matCellDef="let task">
+      {{ task.userId }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="additionalData">
+    <th mat-header-cell *matHeaderCellDef>Data</th>
+    <td mat-cell *matCellDef="let task">
+      {{ task.additionalData }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let task">
+
+      <button mat-button color="primary"
+              (click)="changeStatus(task, 1)">
+        Pending
+      </button>
+
+      <button mat-button color="accent"
+              (click)="changeStatus(task, 2)">
+        InProgress
+      </button>
+
+      <button mat-button color="warn"
+              (click)="changeStatus(task, 3)">
+        Done
+      </button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
