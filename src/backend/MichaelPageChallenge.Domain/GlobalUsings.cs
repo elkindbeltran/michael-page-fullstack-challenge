@@ -1,1 +1,1 @@
-﻿
+﻿global using MichaelPageChallenge.Domain.Common;
