@@ -1,6 +1,4 @@
-﻿global using MichaelPageChallenge.Application.Features.Products.Commands;
-global using MichaelPageChallenge.Application.Features.Products.Queries;
-global using MichaelPageChallenge.API.Extensions;
+﻿global using MichaelPageChallenge.API.Extensions;
 global using MichaelPageChallenge.API.Middleware;
 global using Microsoft.AspNetCore.Mvc;
 global using MediatR;
@@ -12,3 +10,8 @@ global using MichaelPageChallenge.API.Contracts.Errors;
 global using MichaelPageChallenge.Application.Exceptions;
 global using MichaelPageChallenge.Application.DependencyInjection;
 global using MichaelPageChallenge.Infrastructure.DependencyInjection;
+global using MichaelPageChallenge.Application.Features.Tasks.Commands;
+global using MichaelPageChallenge.Application.Features.Tasks.Queries;
+global using MichaelPageChallenge.Application.Features.Users.Commands;
+global using MichaelPageChallenge.Application.Features.Users.Queries;
+global using MichaelPageChallenge.Domain.Enums;

@@ -1,0 +1,35 @@
+<h2>Create Task</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Additional Data</mat-label>
+    <textarea matInput formControlName="additionalData"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>User</mat-label>
+
+    <mat-select formControlName="userId">
+
+      <mat-option *ngFor="let user of users" [value]="user.id">
+        {{ user.name }} ({{ user.email }})
+      </mat-option>
+
+    </mat-select>
+
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit"
+          [disabled]="form.invalid || loading">
+
+    {{ loading ? 'Saving...' : 'Create Task' }}
+
+  </button>
+
+</form>

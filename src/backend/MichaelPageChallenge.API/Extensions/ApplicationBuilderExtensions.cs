@@ -15,6 +15,8 @@ public static class ApplicationBuilderExtensions
 
         app.MapControllers();
 
+        app.UseCors("AllowAngular");
+
         return app;
     }
 }

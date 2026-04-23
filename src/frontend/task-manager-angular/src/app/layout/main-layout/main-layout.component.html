@@ -1,0 +1,18 @@
+<mat-sidenav-container>
+
+  <mat-sidenav mode="side" opened>
+    <a routerLink="/users">Users</a>
+    <a routerLink="/tasks">Tasks</a>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      My App
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
