@@ -1,126 +1,189 @@
 # Michael Page Fullstack Challenge
 
-Clean Architecture-based backend built with **.NET 9**, **EF Core**, **MediatR**, and **Serilog**.
+## 📌 Overview
+This project implements a **Task Management System** using **.NET Web API**, following **Clean Architecture**, CQRS with MediatR, and SQL Server.
+
+It supports user and task management, including advanced filtering and JSON data handling in SQL Server.
 
 ---
 
-## Architecture
+## 🧱 Architecture
 
-This solution follows **Clean Architecture** principles:
+### Solution structure
 
-```
 src/
- ├── MichaelPageChallenge.API            # Entry point (Controllers, Middleware)
- ├── MichaelPageChallenge.Application    # Use cases (CQRS, MediatR, DTOs)
- ├── MichaelPageChallenge.Domain         # Entities, core business logic
- ├── MichaelPageChallenge.Infrastructure # EF Core, repositories, persistence
+ ├── MichaelPageChallenge.API
+ ├── MichaelPageChallenge.Application
+ ├── MichaelPageChallenge.Domain
+ ├── MichaelPageChallenge.Infrastructure
 
 tests/
- ├── MichaelPageChallenge.UnitTests      # Unit tests (Handlers, logic)
-```
+ ├── MichaelPageChallenge.Tests
+
+### Layers
+
+- **API** → Controllers, middleware  
+- **Application** → Commands, Queries, Validators  
+- **Domain** → Entities, business rules  
+- **Infrastructure** → EF Core, repositories  
 
 ---
 
-## Tech Stack
+## 🚀 Getting Started
 
-* .NET 9
-* ASP.NET Core Web API
-* Entity Framework Core (SQL Server)
-* MediatR (CQRS pattern)
-* Serilog (structured logging)
-* xUnit + Moq + FluentAssertions
+### Run the API
 
----
-
-## Setup & Run
-
-### 1. Configure database
-
-Update connection string in:
-
-```
-appsettings.json
-```
-
-Example:
-
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Server=localhost;Database=MichaelPageDb;Trusted_Connection=True;TrustServerCertificate=True;"
-}
-```
-
----
-
-### 2. Run migrations
-
-Using **Package Manager Console**:
-
-```powershell
-Add-Migration InitialCreate -Project MichaelPageChallenge.Infrastructure -StartupProject MichaelPageChallenge.API
-Update-Database -Project MichaelPageChallenge.Infrastructure -StartupProject MichaelPageChallenge.API
-```
-
-Or using **CLI**:
-
-```bash
-dotnet ef migrations add InitialCreate --project src/MichaelPageChallenge.Infrastructure --startup-project src/MichaelPageChallenge.API
-dotnet ef database update --project src/MichaelPageChallenge.Infrastructure --startup-project src/MichaelPageChallenge.API
-```
-
----
-
-### 3. Run the API
-
-```bash
 dotnet run --project src/MichaelPageChallenge.API
-```
 
-Swagger will be available at:
+Swagger available at:
 
-```
-https://localhost:<port>/swagger
-```
+https://localhost:7105/swagger
 
 ---
 
-## Running Tests
+## 🗄️ Database Setup
 
-```bash
-dotnet test
-```
+### Apply migrations
 
----
-
-## Logging
-
-* Logs are written to:
-
-  ```
-  /logs
-  ```
-* Includes **CorrelationId** per request for traceability
+dotnet ef database update --project src/MichaelPageChallenge.Infrastructure --startup-project src/MichaelPageChallenge.API
 
 ---
 
-## Features
+## 📡 API Endpoints
 
-* Clean Architecture separation
-* CQRS with MediatR
-* Global exception handling
-* Correlation ID middleware
-* Structured logging with Serilog
-* Unit testing for application layer
+### 👤 Users
+
+- POST /api/users  
+- GET /api/users  
 
 ---
 
-## Notes
+### 📋 Tasks
 
-This project is designed as a **production-ready baseline** and can be easily extended with:
-
-* Authentication (JWT / Auth0)
-* Pagination & filtering
-* Multi-tenancy
-* Docker support
+- POST /api/tasks  
+- GET /api/tasks  
+- PUT /api/tasks/{id}/status  
 
 ---
+
+### 🔎 Filtering & Sorting
+
+GET /api/tasks?userId={guid}&status={status}&order=asc|desc
+
+Supports:
+- Filter by user  
+- Filter by status  
+- Sort by creation date  
+
+---
+
+## ⚙️ Business Rules
+
+- Task title is required  
+- Task must have an assigned user  
+- Task cannot transition directly from Pending → Done  
+
+---
+
+## 🧪 Validations
+
+Implemented using FluentValidation:
+- Input validation at application layer  
+- Domain invariants enforced in entities  
+
+---
+
+## 🧾 JSON Support in SQL Server
+
+Tasks include an AdditionalData column (NVARCHAR(MAX)) to store JSON.
+
+### Example JSON
+
+{
+  "priority": "High",
+  "estimatedDate": "2026-05-01",
+  "tags": ["backend", "urgent"],
+  "metadata": {
+    "source": "api",
+    "version": 1
+  }
+}
+
+---
+
+## 🛡️ JSON Validation (SQL)
+
+ALTER TABLE Tasks  
+ADD CONSTRAINT CK_Tasks_AdditionalData_IsJson  
+CHECK (  
+    AdditionalData IS NULL  
+    OR AdditionalData = ''  
+    OR ISJSON(AdditionalData) = 1  
+);
+
+---
+
+## 🔍 JSON Queries
+
+### Get a JSON field
+
+SELECT  
+    Id,  
+    Title,  
+    JSON_VALUE(AdditionalData, '$.priority') AS Priority  
+FROM Tasks;
+
+---
+
+### Filter by JSON value
+
+SELECT *  
+FROM Tasks  
+WHERE JSON_VALUE(AdditionalData, '$.priority') = 'High';
+
+---
+
+### Extract JSON object
+
+SELECT  
+    JSON_QUERY(AdditionalData, '$.metadata') AS Metadata  
+FROM Tasks;
+
+---
+
+### Work with arrays
+
+SELECT *  
+FROM Tasks  
+CROSS APPLY OPENJSON(AdditionalData, '$.tags');
+
+---
+
+### Update JSON field
+
+UPDATE Tasks  
+SET AdditionalData = JSON_MODIFY(AdditionalData, '$.priority', 'Low')  
+WHERE Id = 'YOUR_ID';
+
+---
+
+### Combined example
+
+SELECT  
+    Id,  
+    Title,  
+    JSON_VALUE(AdditionalData, '$.priority') AS Priority,  
+    JSON_VALUE(AdditionalData, '$.estimatedDate') AS EstimatedDate  
+FROM Tasks  
+WHERE JSON_VALUE(AdditionalData, '$.priority') = 'High'  
+ORDER BY CreatedAt DESC;
+
+---
+
+## 🧠 Technical Highlights
+
+- Clean Architecture  
+- CQRS with MediatR  
+- FluentValidation pipeline  
+- Global exception handling  
+- SQL Server JSON functions (ISJSON, JSON_VALUE, JSON_QUERY, OPENJSON)  
