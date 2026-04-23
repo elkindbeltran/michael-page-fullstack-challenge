@@ -1,0 +1,11 @@
+﻿global using MediatR;
+global using FluentValidation;
+global using AutoMapper;
+global using MichaelPageChallenge.Domain.Entities;
+global using MichaelPageChallenge.Application.Interfaces;
+global using MichaelPageChallenge.Application.DTOs.Products;
+global using MichaelPageChallenge.Application.Features.Products.Commands;
+global using Microsoft.Extensions.DependencyInjection;
+global using System.Reflection;
+global using MichaelPageChallenge.Application.Behaviors;
+global using MichaelPageChallenge.Application.Exceptions;

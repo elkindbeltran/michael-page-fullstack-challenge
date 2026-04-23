@@ -1,0 +1,8 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using MichaelPageChallenge.Domain.Entities;
+global using MichaelPageChallenge.Application.Interfaces;
+global using MichaelPageChallenge.Infrastructure.Repositories;
+global using Microsoft.Extensions.DependencyInjection;
+global using MichaelPageChallenge.Infrastructure.Persistence;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
