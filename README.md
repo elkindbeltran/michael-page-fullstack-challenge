@@ -38,7 +38,10 @@ tests/
 
 ### Run the API
 
+```
+cd src/backend
 dotnet run --project MichaelPageChallenge.API --launch-profile "https" --urls="https://localhost:44342"
+```
 
 Swagger available at:
 
@@ -50,8 +53,10 @@ https://localhost:PORT/swagger
 
 ### Apply migrations
 
-dotnet ef database update --project src/MichaelPageChallenge.Infrastructure --startup-project src/MichaelPageChallenge.API
-
+```
+cd src/backend
+dotnet ef database update --project MichaelPageChallenge.Infrastructure --startup-project MichaelPageChallenge.API
+```
 ---
 
 ## API Endpoints
