@@ -83,11 +83,11 @@ Supports:
 ---
 
 ### Run Angular SPA
-
+```
 cd src/frontend/task-manager-angular
 npm install
 ng serve -o
-
+```
 ### If required, change API url on Angular SPA
 
 Edit: src/frontend/task-manager-angular/src/environments/environment.ts
