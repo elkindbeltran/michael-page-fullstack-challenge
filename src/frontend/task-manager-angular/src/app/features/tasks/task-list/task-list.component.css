@@ -64,3 +64,17 @@
   background-color: #ef4444;
   color: white;
 }
+
+table .mat-mdc-header-cell {
+  text-align: center !important;
+}
+
+table .mat-mdc-header-cell,
+table .mat-mdc-cell {
+  border-right: 1px solid #cbccce;
+}
+
+table .mat-mdc-header-cell:last-child,
+table .mat-mdc-cell:last-child {
+  border-right: none;
+}
