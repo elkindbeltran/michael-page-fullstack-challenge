@@ -38,7 +38,7 @@ tests/
 
 ### Run the API
 
-dotnet run --project src/MichaelPageChallenge.API
+dotnet run --project MichaelPageChallenge.API --launch-profile "https" --urls="https://localhost:44342"
 
 Swagger available at:
 
@@ -88,7 +88,7 @@ cd src/frontend/task-manager-angular
 npm install
 ng serve -o
 
-### Change API url on Angular SPA
+### If required, change API url on Angular SPA
 
 Edit: src/frontend/task-manager-angular/src/environments/environment.ts
 ```
