@@ -18,6 +18,7 @@ export class TaskListComponent implements OnInit {
   selectedStatus: string = '';
   selectedUserId: string = '';
   users: User[] = [];
+  showProgressBar: boolean = true;
 
   displayedColumns: string[] = [
     'title',
@@ -40,20 +41,34 @@ export class TaskListComponent implements OnInit {
   }
 
   loadUsers(): void {
+    this.showProgressBar = true;
     this.userService.getUsers().subscribe({
-      next: data => this.users = data,
-      error: err => console.error(err)
+      next: data => {
+        this.showProgressBar = false;
+        this.users = data
+      },
+      error: err => {
+        this.showProgressBar = false;
+        console.error(err);
+      }
     });
   }
 
   loadTasks(): void {
+    this.showProgressBar = true;
     this.taskService.getTasks(
       this.selectedUserId || undefined,
       this.selectedStatus || undefined,
       'asc'
     ).subscribe({
-      next: data => this.tasks = data,
-      error: err => console.error('Error loading tasks', err)
+      next: data => {
+        this.tasks = data;
+        this.showProgressBar = false;
+      },
+      error: err => {
+        this.showProgressBar = false;
+        console.error('Error loading tasks', err);
+      }
     });
   }
 
@@ -62,10 +77,12 @@ export class TaskListComponent implements OnInit {
   }
 
   changeStatus(task: Task, status: number): void {
+    this.showProgressBar = true;
     this.taskService.changeStatus(task.id, status)
       .subscribe({
         next: () => this.loadTasks(),
         error: err => {
+          this.showProgressBar = false;
           console.error('Error changing status', err);
 
           let errorMessage = 'Error changing status';
@@ -87,6 +104,7 @@ export class TaskListComponent implements OnInit {
   }
 
   goToTaskCreate(): void {
+    this.showProgressBar = true;
     this.router.navigate(['/tasks/new']);
   }
 }

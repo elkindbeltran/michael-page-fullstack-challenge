@@ -1,17 +1,15 @@
 .app-container {
   height: 100vh;
-  background: #f3f4f6; /* gray-100 suave */
+  background: #f3f4f6;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: 260px;
-  background: #416291; /* gray-800 */
-  color: white;
-  border-right: none;
+  background: #598bdd;
+  color: #1e293b;
+  border-right: 1px solid #dbeafe;
 }
 
-/* LOGO */
 .logo {
   padding: 20px;
   font-size: 18px;
@@ -20,32 +18,26 @@
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* MENU BASE */
 mat-nav-list a {
   display: block;
   padding: 12px 16px;
   margin: 4px 10px;
   border-radius: 8px;
   text-decoration: none;
-  color: #ffffff !important;
   font-weight: 500;
   transition: all 0.2s ease-in-out;
 }
 
-/* HOVER */
 mat-nav-list a:hover {
-  background: #5d60f1;
-  color: #f1f5f9 !important;
+  background: #e2e8f0;
 }
 
-/* ACTIVE ITEM */
 mat-nav-list a.active {
-  background: #5d60f1; /* indigo */
-  color: white !important;
+  background: #dbeafe;
   font-weight: 600;
+  border-left: 4px solid #3b82f6;
 }
 
-/* TOP BAR */
 .topbar {
   position: sticky;
   top: 0;
@@ -55,26 +47,22 @@ mat-nav-list a.active {
   color: #111827;
 }
 
-/* TITLE */
 .title {
   margin-left: 10px;
   font-weight: 600;
   color: #111827;
 }
 
-/* SPACER */
 .spacer {
   flex: 1 1 auto;
 }
 
-/* CONTENT AREA */
 .content {
   padding: 24px;
   background: #f3f4f6;
   min-height: calc(100vh - 64px);
 }
 
-/* CARDS */
 .card {
   background: #ffffff;
   border-radius: 12px;
@@ -83,7 +71,6 @@ mat-nav-list a.active {
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-/* TABLE STYLE */
 table {
   width: 100%;
   background: white;
@@ -92,14 +79,12 @@ table {
   border: 1px solid #e5e7eb;
 }
 
-/* TABLE HEADER */
 th {
   background: #f9fafb;
   color: #374151;
   font-weight: 600;
 }
 
-/* ACTION BUTTONS */
 .action-btn {
   margin-right: 8px;
   cursor: pointer;
@@ -107,13 +92,13 @@ th {
 }
 
 .action-btn.pending {
-  color: #2563eb; /* blue */
+  color: #2563eb;
 }
 
 .action-btn.inprogress {
-  color: #f59e0b; /* amber */
+  color: #f59e0b;
 }
 
 .action-btn.done {
-  color: #ef4444; /* red */
+  color: #ef4444;
 }

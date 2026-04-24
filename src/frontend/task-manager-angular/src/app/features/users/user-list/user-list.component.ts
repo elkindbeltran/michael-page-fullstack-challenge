@@ -10,6 +10,7 @@ export class UserListComponent implements OnInit {
 
   users: User[] = [];
   displayedColumns: string[] = ['id', 'name', 'email'];
+  showProgressBar: boolean = true;
 
   constructor(private userService: UserService) {}
 
@@ -18,9 +19,16 @@ export class UserListComponent implements OnInit {
   }
 
   loadUsers(): void {
+    this.showProgressBar = true;
     this.userService.getUsers().subscribe({
-      next: (data) => this.users = data,
-      error: (err) => console.error(err)
+      next: (data) => {
+        this.users = data;
+        this.showProgressBar = false;
+      },
+      error: (err) => {
+        this.showProgressBar = false;
+        console.error(err);
+      }
     });
   }
 }

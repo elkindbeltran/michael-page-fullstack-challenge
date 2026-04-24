@@ -1,3 +1,7 @@
+<div *ngIf="showProgressBar === true" id="loding_div">
+  <mat-progress-bar mode="indeterminate" value="100"></mat-progress-bar>
+</div>
+
 <div class="mat-elevation-z8">
 
   <table mat-table [dataSource]="users" class="mat-table">
