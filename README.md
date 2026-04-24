@@ -1,7 +1,7 @@
 # Michael Page Fullstack Challenge
 
 ## Overview
-This project implements a **Task Management System** using **.NET Web API**, following **Clean Architecture**, CQRS with MediatR, and SQL Server.
+This project implements a **Task Management System** using **.NET Web API** and **Angular** SPA, following **Clean Architecture**, CQRS with MediatR, and SQL Server.
 
 It supports user and task management, including advanced filtering and JSON data handling in SQL Server.
 
@@ -12,17 +12,20 @@ It supports user and task management, including advanced filtering and JSON data
 ### Solution structure
 
 ```
-src/
+src/backend/
  ├── MichaelPageChallenge.API
  ├── MichaelPageChallenge.Application
  ├── MichaelPageChallenge.Domain
  ├── MichaelPageChallenge.Infrastructure
 
+src/frontend/
+ ├── task-manager-angular
+
 tests/
  ├── MichaelPageChallenge.Tests
 ```
 
-### Layers
+### Layers - Backend
 
 - **API** → Controllers, middleware  
 - **Application** → Commands, Queries, Validators  
@@ -35,11 +38,11 @@ tests/
 
 ### Run the API
 
-dotnet run --project src/MichaelPageChallenge.API
+dotnet run --project MichaelPageChallenge.API --launch-profile "https" --urls="https://localhost:44342"
 
 Swagger available at:
 
-https://localhost:7105/swagger
+https://localhost:PORT/swagger
 
 ---
 
@@ -79,6 +82,23 @@ Supports:
 
 ---
 
+### Run Angular SPA
+```
+cd src/frontend/task-manager-angular
+npm install
+ng serve -o
+```
+### If required, change API url on Angular SPA
+
+Edit: src/frontend/task-manager-angular/src/environments/environment.ts
+```
+change port on: 
+
+    apiUrl: 'https://localhost:44342/api'
+```
+
+---
+
 ## Business Rules
 
 - Task title is required  
@@ -104,11 +124,7 @@ Tasks include an AdditionalData column (NVARCHAR(MAX)) to store JSON.
 {
   "priority": "High",
   "estimatedDate": "2026-05-01",
-  "tags": ["backend", "urgent"],
-  "metadata": {
-    "source": "api",
-    "version": 1
-  }
+  "tags": ["backend", "urgent"]
 }
 
 ---
@@ -166,19 +182,6 @@ CROSS APPLY OPENJSON(AdditionalData, '$.tags');
 UPDATE Tasks  
 SET AdditionalData = JSON_MODIFY(AdditionalData, '$.priority', 'Low')  
 WHERE Id = 'YOUR_ID';
-
----
-
-### Combined example
-
-SELECT  
-    Id,  
-    Title,  
-    JSON_VALUE(AdditionalData, '$.priority') AS Priority,  
-    JSON_VALUE(AdditionalData, '$.estimatedDate') AS EstimatedDate  
-FROM Tasks  
-WHERE JSON_VALUE(AdditionalData, '$.priority') = 'High'  
-ORDER BY CreatedAt DESC;
 
 ---
 

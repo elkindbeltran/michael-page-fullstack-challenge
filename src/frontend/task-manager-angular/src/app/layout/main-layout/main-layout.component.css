@@ -1,73 +1,90 @@
-mat-sidenav-container {
+.app-container {
   height: 100vh;
+  background: #f3f4f6;
 }
 
-/* SIDEBAR */
-mat-sidenav {
-  width: 240px;
-  background: #ffffff;
-  border-right: 1px solid #e0e0e0;
-  padding-top: 10px;
+.sidebar {
+  width: 260px;
+  background: #598bdd;
+  color: #1e293b;
+  border-right: 1px solid #dbeafe;
 }
 
-/* LINKS DEL MENU */
-mat-sidenav a {
+.logo {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f9fafb;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+mat-nav-list a {
   display: block;
   padding: 12px 16px;
+  margin: 4px 10px;
+  border-radius: 8px;
   text-decoration: none;
-  color: #333;
   font-weight: 500;
-  border-radius: 6px;
-  margin: 4px 8px;
   transition: all 0.2s ease-in-out;
 }
 
-mat-sidenav a:hover {
-  background-color: #f1f1f1;
+mat-nav-list a:hover {
+  background: #e2e8f0;
 }
 
-mat-sidenav a.active {
-  background-color: #3f51b5;
-  color: white;
+mat-nav-list a.active {
+  background: #dbeafe;
+  font-weight: 600;
+  border-left: 4px solid #3b82f6;
 }
 
-/* HEADER */
-mat-toolbar {
+.topbar {
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.title {
+  margin-left: 10px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  color: #111827;
 }
 
-/* CONTENIDO */
-mat-sidenav-content {
-  background-color: #f5f6fa;
-  min-height: 100vh;
+.spacer {
+  flex: 1 1 auto;
 }
 
-/* WRAPPER DEL CONTENIDO */
-.content-wrapper {
-  padding: 20px;
+.content {
+  padding: 24px;
+  background: #f3f4f6;
+  min-height: calc(100vh - 64px);
 }
 
-/* TABLAS */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
 table {
   width: 100%;
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
+  border: 1px solid #e5e7eb;
 }
 
-/* CARD STYLE (si usas cards o paneles) */
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+th {
+  background: #f9fafb;
+  color: #374151;
+  font-weight: 600;
 }
 
-/* BOTONES DE ACCION (como Pending / Done) */
 .action-btn {
   margin-right: 8px;
   cursor: pointer;
@@ -75,13 +92,13 @@ table {
 }
 
 .action-btn.pending {
-  color: #1976d2;
+  color: #2563eb;
 }
 
 .action-btn.inprogress {
-  color: #ff9800;
+  color: #f59e0b;
 }
 
 .action-btn.done {
-  color: #f44336;
+  color: #ef4444;
 }

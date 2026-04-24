@@ -1,22 +1,38 @@
-<div style="margin-top: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+<div *ngIf="showProgressBar === true" id="loding_div">
+  <mat-progress-bar mode="indeterminate" value="100"></mat-progress-bar>
+</div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Status</mat-label>
-    <mat-select [(ngModel)]="selectedStatus"
-                (selectionChange)="onStatusFilterChange()">
+<div class="toolbar-filters">
 
-      <mat-option value="">All</mat-option>
-      <mat-option value="Pending">Pending</mat-option>
-      <mat-option value="InProgress">InProgress</mat-option>
-      <mat-option value="Done">Done</mat-option>
+  <div class="filters-left">
 
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="outline" class="filter">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" (selectionChange)="onStatusFilterChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option value="Pending">Pending</mat-option>
+        <mat-option value="InProgress">InProgress</mat-option>
+        <mat-option value="Done">Done</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <button mat-raised-button color="primary"
-          (click)="goToCreate()">
-    New Task
-  </button>
+    <mat-form-field appearance="outline" class="filter-long">
+      <mat-label>User</mat-label>
+      <mat-select [(ngModel)]="selectedUserId" (selectionChange)="onStatusFilterChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{ user.name }} ({{ user.email }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div class="filters-right">
+    <button mat-raised-button color="primary" (click)="goToTaskCreate()">
+      New Task
+    </button>
+  </div>
 
 </div>
 
@@ -30,14 +46,21 @@
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef>Status</th>
     <td mat-cell *matCellDef="let task">
-      {{ task.status }}
+      <div class="status-cell">
+        <span class="status-circle" matTooltip="{{ task.status }}" [ngClass]="{
+          'pending': task.status === 'Pending',
+          'inprogress': task.status === 'InProgress',
+          'done': task.status === 'Done'
+          }">
+        </span>
+      </div>
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="userId">
+  <ng-container matColumnDef="userName">
     <th mat-header-cell *matHeaderCellDef>User</th>
     <td mat-cell *matCellDef="let task">
-      {{ task.userId }}
+      {{ task.userName }}
     </td>
   </ng-container>
 
@@ -49,21 +72,18 @@
   </ng-container>
 
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <th mat-header-cell *matHeaderCellDef style="text-align: center !important;">Actions</th>
     <td mat-cell *matCellDef="let task">
 
-      <button mat-button color="primary"
-              (click)="changeStatus(task, 1)">
+      <button mat-button style="color: #ef4444;" (click)="changeStatus(task, 1)">
         Pending
       </button>
-
-      <button mat-button color="accent"
-              (click)="changeStatus(task, 2)">
+      |
+      <button mat-button style="color: #22c55e;" (click)="changeStatus(task, 2)">
         InProgress
       </button>
-
-      <button mat-button color="warn"
-              (click)="changeStatus(task, 3)">
+      |
+      <button mat-button style="color: #3b82f6;" (click)="changeStatus(task, 3)">
         Done
       </button>
 
