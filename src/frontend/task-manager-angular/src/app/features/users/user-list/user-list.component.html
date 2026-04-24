@@ -6,6 +6,12 @@
 
   <table mat-table [dataSource]="users" class="mat-table">
 
+    <!-- CreatedAt -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef> Creation Date </th>
+      <td mat-cell *matCellDef="let user"> {{ user.createdAt | date:'short' }} </td>
+    </ng-container>
+
     <!-- ID -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>

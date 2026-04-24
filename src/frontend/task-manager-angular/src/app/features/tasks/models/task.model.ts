@@ -4,4 +4,5 @@ export interface Task {
   status: string;
   additionalData: string;
   userId: string;
+  createdAt: string;
 }
