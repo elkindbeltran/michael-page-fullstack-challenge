@@ -1,73 +1,105 @@
-mat-sidenav-container {
+.app-container {
   height: 100vh;
+  background: #f3f4f6; /* gray-100 suave */
 }
 
 /* SIDEBAR */
-mat-sidenav {
-  width: 240px;
-  background: #ffffff;
-  border-right: 1px solid #e0e0e0;
-  padding-top: 10px;
+.sidebar {
+  width: 260px;
+  background: #416291; /* gray-800 */
+  color: white;
+  border-right: none;
 }
 
-/* LINKS DEL MENU */
-mat-sidenav a {
+/* LOGO */
+.logo {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f9fafb;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* MENU BASE */
+mat-nav-list a {
   display: block;
   padding: 12px 16px;
+  margin: 4px 10px;
+  border-radius: 8px;
   text-decoration: none;
-  color: #333;
+  color: #ffffff !important;
   font-weight: 500;
-  border-radius: 6px;
-  margin: 4px 8px;
   transition: all 0.2s ease-in-out;
 }
 
-mat-sidenav a:hover {
-  background-color: #f1f1f1;
+/* HOVER */
+mat-nav-list a:hover {
+  background: #5d60f1;
+  color: #f1f5f9 !important;
 }
 
-mat-sidenav a.active {
-  background-color: #3f51b5;
-  color: white;
+/* ACTIVE ITEM */
+mat-nav-list a.active {
+  background: #5d60f1; /* indigo */
+  color: white !important;
+  font-weight: 600;
 }
 
-/* HEADER */
-mat-toolbar {
+/* TOP BAR */
+.topbar {
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+/* TITLE */
+.title {
+  margin-left: 10px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  color: #111827;
 }
 
-/* CONTENIDO */
-mat-sidenav-content {
-  background-color: #f5f6fa;
-  min-height: 100vh;
+/* SPACER */
+.spacer {
+  flex: 1 1 auto;
 }
 
-/* WRAPPER DEL CONTENIDO */
-.content-wrapper {
-  padding: 20px;
+/* CONTENT AREA */
+.content {
+  padding: 24px;
+  background: #f3f4f6;
+  min-height: calc(100vh - 64px);
 }
 
-/* TABLAS */
+/* CARDS */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* TABLE STYLE */
 table {
   width: 100%;
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
+  border: 1px solid #e5e7eb;
 }
 
-/* CARD STYLE (si usas cards o paneles) */
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+/* TABLE HEADER */
+th {
+  background: #f9fafb;
+  color: #374151;
+  font-weight: 600;
 }
 
-/* BOTONES DE ACCION (como Pending / Done) */
+/* ACTION BUTTONS */
 .action-btn {
   margin-right: 8px;
   cursor: pointer;
@@ -75,13 +107,13 @@ table {
 }
 
 .action-btn.pending {
-  color: #1976d2;
+  color: #2563eb; /* blue */
 }
 
 .action-btn.inprogress {
-  color: #ff9800;
+  color: #f59e0b; /* amber */
 }
 
 .action-btn.done {
-  color: #f44336;
+  color: #ef4444; /* red */
 }

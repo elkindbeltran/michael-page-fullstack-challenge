@@ -20,7 +20,7 @@ public class TaskConfiguration : IEntityTypeConfiguration<TaskItem>
             .HasColumnType("nvarchar(max)")
             .IsRequired(false);
 
-        builder.HasOne<User>()
+        builder.HasOne(x => x.User)
             .WithMany()
             .HasForeignKey(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade);

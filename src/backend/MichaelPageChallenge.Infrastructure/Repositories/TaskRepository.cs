@@ -17,7 +17,7 @@ public class TaskRepository : ITaskRepository
 
     public async Task<IEnumerable<TaskItem>> GetFilteredAsync(Guid? userId, TaskItemStatus? status, bool orderDesc)
     {
-        var query = _context.Tasks.AsQueryable();
+        var query = _context.Tasks.Include(x => x.User).AsQueryable();
 
         if (userId.HasValue)
             query = query.Where(x => x.UserId == userId);

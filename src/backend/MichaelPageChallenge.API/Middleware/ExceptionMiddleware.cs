@@ -50,6 +50,22 @@ public class ExceptionMiddleware
 
                 break;
 
+            case ArgumentException:
+            case InvalidOperationException:
+                response.StatusCode = (int)HttpStatusCode.BadRequest;
+                apiError.StatusCode = response.StatusCode;
+                apiError.Message = "Bad request";
+
+                apiError.Errors = new[]
+                {
+                    new
+                    {
+                        PropertyName = "General",
+                        ErrorMessage = exception.Message
+                    }
+                };
+                break;
+
             case NotFoundException notFoundEx:
                 response.StatusCode = (int)HttpStatusCode.NotFound;
                 apiError.StatusCode = response.StatusCode;

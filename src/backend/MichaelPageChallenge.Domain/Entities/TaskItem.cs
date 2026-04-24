@@ -9,6 +9,8 @@ public class TaskItem : BaseEntity
     public TaskItemStatus Status { get; private set; }
     public string? AdditionalData { get; private set; }
 
+    public User User { get; private set; } = null!;
+
     private TaskItem() { }
 
     public TaskItem(string title, Guid userId, string additionalData)
@@ -45,7 +47,7 @@ public class TaskItem : BaseEntity
             }
             catch
             {
-                throw new ArgumentException("Invalid JSON format");
+                throw new ArgumentException("Invalid JSON format for AdditionalData");
             }
         }
 

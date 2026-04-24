@@ -7,4 +7,5 @@ public class TaskDto
     public string Status { get; set; } = string.Empty;
     public string AdditionalData { get; set; } = string.Empty;
     public Guid UserId { get; set; }
+    public string UserName { get; set; } = string.Empty;
 }

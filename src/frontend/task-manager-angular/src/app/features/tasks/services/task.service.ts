@@ -13,7 +13,7 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-    getTasks(userId?: string, status?: string, order: string = 'asc'): Observable<Task[]> {
+  getTasks(userId?: string, status?: string, order: string = 'asc'): Observable<Task[]> {
 
     let params = new HttpParams();
 
@@ -29,7 +29,7 @@ export class TaskService {
     return this.http.post<Task>(this.apiUrl, task);
   }
 
-    changeStatus(taskId: string, status: number): Observable<any> {
+  changeStatus(taskId: string, status: number): Observable<any> {
     return this.http.put(
       `${this.apiUrl}/${taskId}/status`,
       {
