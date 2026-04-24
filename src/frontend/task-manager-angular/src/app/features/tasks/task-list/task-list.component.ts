@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../../users/models/user.model';
 import { UserService } from '../../users/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-task-list',
@@ -19,8 +20,10 @@ export class TaskListComponent implements OnInit {
   selectedUserId: string = '';
   users: User[] = [];
   showProgressBar: boolean = true;
+  sort: string = 'asc';
 
   displayedColumns: string[] = [
+    'createdAt',
     'title',
     'status',
     'userName',
@@ -59,7 +62,7 @@ export class TaskListComponent implements OnInit {
     this.taskService.getTasks(
       this.selectedUserId || undefined,
       this.selectedStatus || undefined,
-      'asc'
+      this.sort
     ).subscribe({
       next: data => {
         this.tasks = data;
@@ -107,4 +110,10 @@ export class TaskListComponent implements OnInit {
     this.showProgressBar = true;
     this.router.navigate(['/tasks/new']);
   }
+
+  onSortChange(sort: Sort): void {
+    this.sort = sort.direction || 'asc';
+
+    this.loadTasks();
+  }  
 }

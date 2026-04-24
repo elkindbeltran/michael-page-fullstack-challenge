@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
-  displayedColumns: string[] = ['id', 'name', 'email'];
+  displayedColumns: string[] = ['createdAt', 'id', 'name', 'email'];
   showProgressBar: boolean = true;
 
   constructor(private userService: UserService) {}
