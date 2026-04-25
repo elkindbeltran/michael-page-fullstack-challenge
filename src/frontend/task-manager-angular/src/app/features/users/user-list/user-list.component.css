@@ -1,3 +1,40 @@
+.toolbar-filters {
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  flex-wrap: nowrap;
+}
+
+.filters-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.filters-left .filter {
+  flex-shrink: 0;
+}
+
+.filters-left .filter-long {
+  width: 30em !important;
+}
+
+.filters-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
 table .mat-mdc-header-cell {
   text-align: center !important;
 }

@@ -2,6 +2,20 @@
   <mat-progress-bar mode="indeterminate" value="100"></mat-progress-bar>
 </div>
 
+<div class="toolbar-filters">
+
+  <div class="filters-left">
+
+  </div>
+
+  <div class="filters-right">
+    <button mat-raised-button color="primary" (click)="goToUserCreate()">
+      New User
+    </button>
+  </div>
+
+</div>
+
 <div class="mat-elevation-z8">
 
   <table mat-table [dataSource]="users" class="mat-table">

@@ -13,11 +13,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { UserFormComponent } from './user-form/user-form.component'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
-    UserListComponent
+    UserListComponent,
+    UserFormComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ]
 })
 export class UsersModule { }
