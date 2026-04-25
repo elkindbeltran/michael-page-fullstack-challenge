@@ -1,0 +1,22 @@
+<h2>Create User</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading" style="margin-right: 20px;">
+    {{ loading ? 'Saving...' : 'Create User' }}
+  </button>
+
+  <button mat-raised-button color="accent" (click)="goToUsersList()">
+    Cancel
+  </button>
+</form>
