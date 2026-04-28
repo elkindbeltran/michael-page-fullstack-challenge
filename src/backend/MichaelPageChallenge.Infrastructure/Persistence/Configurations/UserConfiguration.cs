@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.Infrastructure.Persistence.Configurations;
 
+[ExcludeFromCodeCoverage]
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)

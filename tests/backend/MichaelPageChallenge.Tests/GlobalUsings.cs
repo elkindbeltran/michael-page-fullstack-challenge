@@ -12,3 +12,8 @@ global using MichaelPageChallenge.Application.Exceptions;
 global using MichaelPageChallenge.Application.Features.Tasks.Commands;
 global using MichaelPageChallenge.Domain.Enums;
 global using MichaelPageChallenge.Application.Features.Tasks.Queries;
+global using MediatR;
+global using MichaelPageChallenge.API.Controllers;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Logging;
+global using FluentValidation.TestHelper;

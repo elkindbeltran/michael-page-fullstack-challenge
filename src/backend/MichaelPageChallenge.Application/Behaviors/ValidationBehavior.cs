@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.Application.Behaviors;
 
+[ExcludeFromCodeCoverage]
 public class ValidationBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull

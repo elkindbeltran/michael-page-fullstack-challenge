@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.Application.DependencyInjection;
 
+[ExcludeFromCodeCoverage]
 public static class DependencyInjection
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)

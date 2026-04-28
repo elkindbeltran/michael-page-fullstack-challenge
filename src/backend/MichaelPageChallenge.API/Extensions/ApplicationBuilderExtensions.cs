@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.API.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class ApplicationBuilderExtensions
 {
     public static WebApplication UseApiMiddlewares(this WebApplication app, IWebHostEnvironment env)

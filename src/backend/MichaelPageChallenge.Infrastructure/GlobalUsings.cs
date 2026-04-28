@@ -7,3 +7,4 @@ global using Microsoft.Extensions.DependencyInjection;
 global using MichaelPageChallenge.Infrastructure.Persistence;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using MichaelPageChallenge.Domain.Enums;
+global using System.Diagnostics.CodeAnalysis;

@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.API.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class SerilogExtensions
 {
     public static IHostBuilder AddSerilogConfiguration(this IHostBuilder host, IConfiguration configuration)

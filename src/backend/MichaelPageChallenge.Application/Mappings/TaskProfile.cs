@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.Application.Mappings;
 
+[ExcludeFromCodeCoverage]
 public class TaskProfile : Profile
 {
     public TaskProfile()
