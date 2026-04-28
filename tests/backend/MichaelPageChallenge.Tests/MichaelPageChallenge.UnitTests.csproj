@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\backend\MichaelPageChallenge.API\MichaelPageChallenge.API.csproj" />
     <ProjectReference Include="..\..\..\src\backend\MichaelPageChallenge.Application\MichaelPageChallenge.Application.csproj" />
   </ItemGroup>
 

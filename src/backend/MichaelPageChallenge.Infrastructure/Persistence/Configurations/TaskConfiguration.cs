@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.Infrastructure.Persistence.Configurations;
 
+[ExcludeFromCodeCoverage]
 public class TaskConfiguration : IEntityTypeConfiguration<TaskItem>
 {
     public void Configure(EntityTypeBuilder<TaskItem> builder)

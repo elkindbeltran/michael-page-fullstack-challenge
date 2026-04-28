@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.API.Middleware;
 
+[ExcludeFromCodeCoverage]
 public class CorrelationIdMiddleware
 {
     private const string HeaderName = "X-Correlation-Id";

@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.API.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApiServices(this IServiceCollection services)

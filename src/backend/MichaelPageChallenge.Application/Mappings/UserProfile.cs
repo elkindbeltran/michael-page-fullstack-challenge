@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.Application.Mappings;
 
+[ExcludeFromCodeCoverage]
 public class UserProfile : Profile
 {
     public UserProfile()

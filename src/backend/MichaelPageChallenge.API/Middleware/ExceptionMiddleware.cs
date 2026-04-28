@@ -1,5 +1,6 @@
 ﻿namespace MichaelPageChallenge.API.Middleware;
 
+[ExcludeFromCodeCoverage]
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
