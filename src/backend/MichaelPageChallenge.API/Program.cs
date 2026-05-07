@@ -12,3 +12,7 @@ var app = builder.Build();
 app.UseApiMiddlewares(app.Environment);
 
 app.Run();
+
+public partial class Program
+{
+}

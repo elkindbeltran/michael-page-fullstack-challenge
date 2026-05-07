@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichaelPageChallenge.Infras
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichaelPageChallenge.UnitTests", "..\..\tests\backend\MichaelPageChallenge.Tests\MichaelPageChallenge.UnitTests.csproj", "{2ECE1174-ABCE-E1E6-0ADD-9F145717883F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichaelPageChallenge.IntegrationTests", "..\..\tests\backend\MichaelPageChallenge.IntegrationTests\MichaelPageChallenge.IntegrationTests.csproj", "{5D30FE29-AF08-4927-916D-130EC482C123}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{2ECE1174-ABCE-E1E6-0ADD-9F145717883F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ECE1174-ABCE-E1E6-0ADD-9F145717883F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ECE1174-ABCE-E1E6-0ADD-9F145717883F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D30FE29-AF08-4927-916D-130EC482C123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D30FE29-AF08-4927-916D-130EC482C123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D30FE29-AF08-4927-916D-130EC482C123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D30FE29-AF08-4927-916D-130EC482C123}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{9203A07E-FCFB-6897-5A24-14A62CDCF394} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7D2A4EDD-CA02-E653-6CFE-509C81369AE1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{2ECE1174-ABCE-E1E6-0ADD-9F145717883F} = {90E004E6-BC4B-44C7-842D-52F781BAC02C}
+		{5D30FE29-AF08-4927-916D-130EC482C123} = {90E004E6-BC4B-44C7-842D-52F781BAC02C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E053A1C2-2490-4D45-BFD9-4317293C2D7B}
