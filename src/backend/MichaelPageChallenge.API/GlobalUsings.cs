@@ -16,3 +16,5 @@ global using MichaelPageChallenge.Application.Features.Users.Commands;
 global using MichaelPageChallenge.Application.Features.Users.Queries;
 global using MichaelPageChallenge.Domain.Enums;
 global using System.Diagnostics.CodeAnalysis;
+global using MichaelPageChallenge.Application.DTOs.Tasks;
+global using MichaelPageChallenge.Application.DTOs.Users;
