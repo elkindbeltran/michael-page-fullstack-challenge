@@ -14,7 +14,7 @@ public class TasksController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] Guid? userId, [FromQuery] TaskItemStatus? status, [FromQuery] string? order = "asc")
+    public async Task<ActionResult<IEnumerable<TaskDto>>> Get([FromQuery] Guid? userId, [FromQuery] TaskItemStatus? status, [FromQuery] string? order = "asc")
     {
         _logger.LogInformation("Fetching tasks with filters");
 
@@ -24,7 +24,7 @@ public class TasksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateTaskCommand command)
+    public async Task<ActionResult<TaskDto>> Create(CreateTaskCommand command)
     {
         _logger.LogInformation("Creating task");
 
@@ -34,7 +34,7 @@ public class TasksController : ControllerBase
     }
 
     [HttpPut("{id}/status")]
-    public async Task<IActionResult> ChangeStatus(Guid id, ChangeTaskStatusCommand command)
+    public async Task<ActionResult<TaskDto>> ChangeStatus(Guid id, ChangeTaskStatusCommand command)
     {
         if (id != command.TaskId)
             return BadRequest("Task ID mismatch");

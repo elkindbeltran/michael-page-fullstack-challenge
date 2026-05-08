@@ -14,7 +14,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<ActionResult<IEnumerable<UserDto>>> Get()
     {
         _logger.LogInformation("Fetching users");
 
@@ -24,7 +24,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateUserCommand command)
+    public async Task<ActionResult<UserDto>> Create(CreateUserCommand command)
     {
         _logger.LogInformation("Creating user");
 
